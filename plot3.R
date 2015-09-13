@@ -1,4 +1,4 @@
-png('plot3.png', width=504, height=504)
+# Reading the data
 dat = read.table('household_power_consumption.txt', sep=';', 
                  header=TRUE, na.strings='?', 
                  colClasses=c('character', 
@@ -9,6 +9,8 @@ dat = read.table('household_power_consumption.txt', sep=';',
 dat_subset = subset(dat, Date=='1/2/2007' | Date=='2/2/2007')
 dat_subset$DateTime = strptime(paste(dat_subset$Date, dat_subset$Time, sep=" "), format="%d/%m/%Y %H:%M:%S")
 
+# Ploting the image
+png('plot3.png', width=504, height=504)
 par(bg=NA)
 plot(dat_subset$DateTime, dat_subset$Sub_metering_1,
      ylab = 'Energy sub metering',
