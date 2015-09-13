@@ -11,9 +11,11 @@ dat_subset$DateTime = strptime(paste(dat_subset$Date, dat_subset$Time, sep=" "),
 
 # Ploting the image
 png('plot2.png', width=504, height=504)
-par(bg=NA)
+old.par <- par(bg=NA)
+par(mfrow=c(1, 1))
 plot(dat_subset$DateTime, dat_subset$Global_active_power,
      ylab = 'Global Active Power (kilowatts)',
      xlab = '',
      type = 'l')
 dev.off()
+par(old.par)

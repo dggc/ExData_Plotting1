@@ -11,7 +11,8 @@ dat_subset$DateTime = strptime(paste(dat_subset$Date, dat_subset$Time, sep=" "),
 
 # Ploting the image
 png('plot3.png', width=504, height=504)
-par(bg=NA)
+old.par <- par(bg=NA)
+par(mfrow=c(1, 1))
 plot(dat_subset$DateTime, dat_subset$Sub_metering_1,
      ylab = 'Energy sub metering',
      xlab = '',
@@ -22,3 +23,4 @@ lines(dat_subset$DateTime, dat_subset$Sub_metering_3, col='blue')
 legend("topright", c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'), 
        col=c('black', 'red', 'blue'), lty=1)
 dev.off()
+par(old.par)
